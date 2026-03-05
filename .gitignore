@@ -3,5 +3,5 @@ __pycache__/
 *.pyo
 .env.cron
 arxiv_digest/state/
-arxiv_digest/output/*.log
+arxiv_digest/output/
 run_digest_cron.sh
