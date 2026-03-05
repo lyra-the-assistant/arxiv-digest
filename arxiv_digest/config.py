@@ -196,11 +196,26 @@ INTEREST_PROFILES = [
 ]
 
 # ---------------------------------------------------------------------------
+# LLM Configuration (for relevance evaluation)
+# ---------------------------------------------------------------------------
+# Uses an OpenAI-compatible API.  Set LLM_BASE_URL for non-OpenAI providers
+# (e.g. Anthropic via proxy, vLLM, Ollama, Together, etc.).
+# When LLM_API_KEY is empty the pipeline falls back to keyword-only scoring.
+LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
+LLM_MODEL = os.environ.get("LLM_MODEL", "gpt-4o-mini")
+LLM_BASE_URL = os.environ.get("LLM_BASE_URL", "")  # e.g. "http://localhost:11434/v1"
+LLM_BATCH_SIZE = 10  # papers per LLM call (balances token use vs. call count)
+
+# ---------------------------------------------------------------------------
 # Relevance Scoring
 # ---------------------------------------------------------------------------
-# A paper is relevant if its combined score exceeds this threshold.
-# Tuned for balanced precision/recall on ~700 daily papers → ~30-80 matches.
-RELEVANCE_THRESHOLD = 4.0
+# Pre-filter threshold (keyword stage): intentionally LOW so borderline
+# papers still reach the LLM.  ~150-200 candidates from ~700 total.
+PREFILTER_THRESHOLD = 1.5
+
+# LLM relevance threshold: papers with LLM score ≥ this value are included.
+# LLM scores are 1-5 (1=irrelevant, 3=borderline, 5=highly relevant).
+RELEVANCE_THRESHOLD = 3
 
 # Bonus for papers whose primary category is in our channels
 CATEGORY_BONUS = {"cs.RO": 0.5, "cs.CV": 0.0, "cs.AI": 0.2, "cs.LG": 0.0}
