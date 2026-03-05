@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pyo
+.env.cron
+arxiv_digest/state/
+arxiv_digest/output/*.log
+run_digest_cron.sh
