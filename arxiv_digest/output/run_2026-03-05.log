@@ -1,0 +1,93 @@
+2026-03-05 11:25:45,453 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:25:45,453 [INFO] arxiv_digest: arxiv Digest Pipeline — 2026-03-05
+2026-03-05 11:25:45,454 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:25:45,454 [INFO] arxiv_digest: Stage 1/6: Fetching RSS feed...
+2026-03-05 11:25:45,454 [INFO] arxiv_digest.rss_fetcher: Fetching RSS feed from https://rss.arxiv.org/rss/cs.RO+cs.CV+cs.AI+cs.LG
+2026-03-05 11:25:45,768 [INFO] arxiv_digest.rss_fetcher: Feed fetched: 716 items, last build: Thu, 05 Mar 2026 11:03:17 +0000
+2026-03-05 11:25:45,772 [INFO] arxiv_digest.rss_fetcher: Parsed 716 unique papers from RSS feed
+2026-03-05 11:25:45,773 [INFO] arxiv_digest: Fetched 716 papers from RSS
+2026-03-05 11:25:45,773 [INFO] arxiv_digest: Stage 2/6: Scoring relevance...
+2026-03-05 11:25:45,901 [INFO] arxiv_digest.relevance: Relevance filter: 63 / 716 papers matched (threshold=4.0)
+2026-03-05 11:25:45,901 [INFO] arxiv_digest: Stage 3/6: Enriching 63 papers via arxiv API...
+2026-03-05 11:25:45,901 [INFO] arxiv_digest.arxiv_enricher: Querying arxiv API for batch 1–50 of 63
+2026-03-05 11:25:48,946 [INFO] arxiv_digest.arxiv_enricher: Querying arxiv API for batch 51–63 of 63
+2026-03-05 11:25:48,988 [INFO] arxiv_digest.arxiv_enricher: Enriched 63 / 63 papers with arxiv API metadata
+2026-03-05 11:25:48,988 [INFO] arxiv_digest: Stage 4/6: Detecting venues and project pages...
+2026-03-05 11:25:48,991 [INFO] arxiv_digest.venue_detector: Venue detection: 22 / 63 papers have venue info
+2026-03-05 11:25:48,991 [INFO] arxiv_digest.venue_detector: Project page detection: 6 / 63 papers have project URLs
+2026-03-05 11:25:48,991 [INFO] arxiv_digest: Stage 5/6: Generating markdown digest...
+2026-03-05 11:25:48,991 [INFO] arxiv_digest.digest_generator: Digest written to /workspace/arxiv_digest/output/digest_2026-03-05.md (63 papers, 120286 bytes)
+2026-03-05 11:25:48,992 [INFO] arxiv_digest: Digest written to /workspace/arxiv_digest/output/digest_2026-03-05.md
+2026-03-05 11:25:48,992 [INFO] arxiv_digest: Stage 6/6: Skipping Zotero (dry-run mode)
+2026-03-05 11:25:48,992 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:25:48,992 [INFO] arxiv_digest: Pipeline complete in 3.5 seconds
+2026-03-05 11:25:48,992 [INFO] arxiv_digest:   Papers fetched:    716
+2026-03-05 11:25:48,992 [INFO] arxiv_digest:   Papers matched:    63
+2026-03-05 11:25:48,992 [INFO] arxiv_digest:   Zotero items:      0 created
+2026-03-05 11:25:48,992 [INFO] arxiv_digest:   PDFs uploaded:     0
+2026-03-05 11:25:48,992 [INFO] arxiv_digest:   Digest:            /workspace/arxiv_digest/output/digest_2026-03-05.md
+2026-03-05 11:25:48,992 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:27:22,530 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:27:22,530 [INFO] arxiv_digest: arxiv Digest Pipeline — 2026-03-05
+2026-03-05 11:27:22,530 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:27:22,530 [INFO] arxiv_digest: Stage 1/6: Fetching RSS feed...
+2026-03-05 11:27:22,530 [INFO] arxiv_digest.rss_fetcher: Fetching RSS feed from https://rss.arxiv.org/rss/cs.RO+cs.CV+cs.AI+cs.LG
+2026-03-05 11:27:22,835 [INFO] arxiv_digest.rss_fetcher: Feed fetched: 716 items, last build: Thu, 05 Mar 2026 11:03:17 +0000
+2026-03-05 11:27:22,840 [INFO] arxiv_digest.rss_fetcher: Parsed 716 unique papers from RSS feed
+2026-03-05 11:27:22,840 [INFO] arxiv_digest: Fetched 716 papers from RSS
+2026-03-05 11:27:22,840 [INFO] arxiv_digest: Stage 2/6: Scoring relevance...
+2026-03-05 11:27:22,969 [INFO] arxiv_digest.relevance: Relevance filter: 63 / 716 papers matched (threshold=4.0)
+2026-03-05 11:27:22,969 [INFO] arxiv_digest: Stage 3/6: Enriching 63 papers via arxiv API...
+2026-03-05 11:27:22,969 [INFO] arxiv_digest.arxiv_enricher: Querying arxiv API for batch 1–50 of 63
+2026-03-05 11:27:26,015 [INFO] arxiv_digest.arxiv_enricher: Querying arxiv API for batch 51–63 of 63
+2026-03-05 11:27:26,056 [INFO] arxiv_digest.arxiv_enricher: Enriched 63 / 63 papers with arxiv API metadata
+2026-03-05 11:27:26,056 [INFO] arxiv_digest: Stage 4/6: Detecting venues and project pages...
+2026-03-05 11:27:26,059 [INFO] arxiv_digest.venue_detector: Venue detection: 22 / 63 papers have venue info
+2026-03-05 11:27:26,059 [INFO] arxiv_digest.venue_detector: Project page detection: 6 / 63 papers have project URLs
+2026-03-05 11:27:26,059 [INFO] arxiv_digest: Stage 5/6: Generating markdown digest...
+2026-03-05 11:27:26,060 [INFO] arxiv_digest.digest_generator: Digest written to /workspace/arxiv_digest/output/digest_2026-03-05.md (63 papers, 120286 bytes)
+2026-03-05 11:27:26,060 [INFO] arxiv_digest: Digest written to /workspace/arxiv_digest/output/digest_2026-03-05.md
+2026-03-05 11:27:26,060 [INFO] arxiv_digest: Stage 6/6: Adding papers to Zotero...
+2026-03-05 11:27:27,220 [INFO] arxiv_digest.zotero_client: Synced processed IDs: 18 total (0 from Zotero)
+2026-03-05 11:27:27,221 [INFO] arxiv_digest.zotero_client: Adding 59 new papers to Zotero (4 already processed)
+2026-03-05 11:27:29,738 [INFO] arxiv_digest.zotero_client: Zotero batch 1–50: 50 created, 0 failed
+2026-03-05 11:27:31,247 [INFO] arxiv_digest.zotero_client: Zotero batch 51–59: 9 created, 0 failed
+2026-03-05 11:27:31,249 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:27:31,249 [INFO] arxiv_digest: Pipeline complete in 8.7 seconds
+2026-03-05 11:27:31,249 [INFO] arxiv_digest:   Papers fetched:    716
+2026-03-05 11:27:31,249 [INFO] arxiv_digest:   Papers matched:    63
+2026-03-05 11:27:31,249 [INFO] arxiv_digest:   Zotero items:      59 created
+2026-03-05 11:27:31,249 [INFO] arxiv_digest:   PDFs uploaded:     0
+2026-03-05 11:27:31,249 [INFO] arxiv_digest:   Digest:            /workspace/arxiv_digest/output/digest_2026-03-05.md
+2026-03-05 11:27:31,249 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:27:38,274 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:27:38,275 [INFO] arxiv_digest: arxiv Digest Pipeline — 2026-03-05
+2026-03-05 11:27:38,275 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:27:38,275 [INFO] arxiv_digest: Stage 1/6: Fetching RSS feed...
+2026-03-05 11:27:38,275 [INFO] arxiv_digest.rss_fetcher: Fetching RSS feed from https://rss.arxiv.org/rss/cs.RO+cs.CV+cs.AI+cs.LG
+2026-03-05 11:27:38,587 [INFO] arxiv_digest.rss_fetcher: Feed fetched: 716 items, last build: Thu, 05 Mar 2026 11:03:17 +0000
+2026-03-05 11:27:38,592 [INFO] arxiv_digest.rss_fetcher: Parsed 716 unique papers from RSS feed
+2026-03-05 11:27:38,592 [INFO] arxiv_digest: Fetched 716 papers from RSS
+2026-03-05 11:27:38,592 [INFO] arxiv_digest: Stage 2/6: Scoring relevance...
+2026-03-05 11:27:38,720 [INFO] arxiv_digest.relevance: Relevance filter: 63 / 716 papers matched (threshold=4.0)
+2026-03-05 11:27:38,720 [INFO] arxiv_digest: Stage 3/6: Enriching 63 papers via arxiv API...
+2026-03-05 11:27:38,721 [INFO] arxiv_digest.arxiv_enricher: Querying arxiv API for batch 1–50 of 63
+2026-03-05 11:27:41,767 [INFO] arxiv_digest.arxiv_enricher: Querying arxiv API for batch 51–63 of 63
+2026-03-05 11:27:41,811 [INFO] arxiv_digest.arxiv_enricher: Enriched 63 / 63 papers with arxiv API metadata
+2026-03-05 11:27:41,811 [INFO] arxiv_digest: Stage 4/6: Detecting venues and project pages...
+2026-03-05 11:27:41,814 [INFO] arxiv_digest.venue_detector: Venue detection: 22 / 63 papers have venue info
+2026-03-05 11:27:41,814 [INFO] arxiv_digest.venue_detector: Project page detection: 6 / 63 papers have project URLs
+2026-03-05 11:27:41,814 [INFO] arxiv_digest: Stage 5/6: Generating markdown digest...
+2026-03-05 11:27:41,814 [INFO] arxiv_digest.digest_generator: Digest written to /workspace/arxiv_digest/output/digest_2026-03-05.md (63 papers, 120286 bytes)
+2026-03-05 11:27:41,814 [INFO] arxiv_digest: Digest written to /workspace/arxiv_digest/output/digest_2026-03-05.md
+2026-03-05 11:27:41,814 [INFO] arxiv_digest: Stage 6/6: Adding papers to Zotero...
+2026-03-05 11:27:44,428 [INFO] arxiv_digest.zotero_client: Synced processed IDs: 77 total (0 from Zotero)
+2026-03-05 11:27:44,429 [INFO] arxiv_digest.zotero_client: All 63 papers already in Zotero — nothing to add
+2026-03-05 11:27:44,430 [INFO] arxiv_digest: ============================================================
+2026-03-05 11:27:44,430 [INFO] arxiv_digest: Pipeline complete in 6.2 seconds
+2026-03-05 11:27:44,430 [INFO] arxiv_digest:   Papers fetched:    716
+2026-03-05 11:27:44,430 [INFO] arxiv_digest:   Papers matched:    63
+2026-03-05 11:27:44,430 [INFO] arxiv_digest:   Zotero items:      0 created
+2026-03-05 11:27:44,430 [INFO] arxiv_digest:   PDFs uploaded:     0
+2026-03-05 11:27:44,430 [INFO] arxiv_digest:   Digest:            /workspace/arxiv_digest/output/digest_2026-03-05.md
+2026-03-05 11:27:44,430 [INFO] arxiv_digest: ============================================================

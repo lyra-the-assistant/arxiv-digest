@@ -37,7 +37,8 @@ def _zotero_headers(write_token: str | None = None) -> dict:
         "Content-Type": "application/json",
     }
     if write_token:
-        h["Zotero-Write-Token"] = write_token
+        # Zotero requires write tokens to be 5-32 characters
+        h["Zotero-Write-Token"] = write_token.replace("-", "")[:32]
     return h
 
 
