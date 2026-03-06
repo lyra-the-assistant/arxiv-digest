@@ -8,7 +8,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 DIGESTS_DIR = PROJECT_ROOT / "digests"
 SECRET_DIR = PROJECT_ROOT / ".secret"
 
-CATEGORIES = ["cs.RO", "cs.CV", "cs.AI", "cs.LG"]
+CATEGORIES = ["cs.RO"]
 ZOTERO_COLLECTION_NAME = "arxiv-digest"
 
 ARXIV_RSS_BASE = "https://rss.arxiv.org/atom"

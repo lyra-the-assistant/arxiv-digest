@@ -1,18 +1,20 @@
 ---
 name: arxiv-digest
 description: >
-  Fetch daily arXiv announcements (cs.RO, cs.CV, cs.AI, cs.LG), filter by
-  research relevance, generate a structured markdown digest, and sync matched
-  papers to a Zotero collection with arXiv PDFs attached.
+  Fetch daily arXiv announcements (cs.RO), filter by research relevance,
+  generate a structured markdown digest, and sync matched papers to a
+  Zotero collection with arXiv PDFs attached.
 ---
 
 # arXiv Daily Digest
+
+All paths below are relative to this skill's root directory.
 
 ## Quick reference
 
 | Item | Value |
 |------|-------|
-| **Categories** | `cs.RO`, `cs.CV`, `cs.AI`, `cs.LG` |
+| **Categories** | `cs.RO` |
 | **Announce types** | `new` and `cross` only (`replace` / `replace-cross` are ignored) |
 | **Zotero collection** | personal library → `arxiv-digest` (auto-created if absent) |
 | **Credentials** | `.secret/zotero.env` (`ZOTERO_API_KEY`, `ZOTERO_USER_ID`) |
@@ -24,24 +26,35 @@ description: >
 ## Invocation protocol
 
 This is a **three-step** skill. Execute the steps in order.
+All shell commands assume the working directory is the skill root.
 
 ### Step 1 — Fetch papers
 
 ```bash
-cd /Users/tianbeiwen/Develop/arxiv-digest
 source .venv/bin/activate
 python src/main.py fetch
 ```
 
-Fetches the arXiv RSS Atom feed for the four categories, enriches each
-paper with metadata from the arXiv Search API, filters to `new` and
-`cross` announcements, and writes the result to `data/papers.json`.
+Fetches the arXiv RSS Atom feed for `cs.RO`, enriches each paper with
+metadata from the arXiv Search API, filters to `new` and `cross`
+announcements, and writes the result to `data/papers.json`.
 
 ### Step 2 — Judge relevance
 
-Read `data/papers.json`. For **every** paper, decide whether it is
-relevant to the research interests defined below. Write the verdicts to
-`data/relevance.json` in this exact format:
+Read `data/papers.json`. For **every** paper, judge whether it is
+relevant to the research interests defined below based on its **title
+and abstract**. Write the verdicts to `data/relevance.json`.
+
+**You MUST use LLM subagents to perform this judgment.** Do NOT apply
+keyword matching, heuristics, or any rule-based pre-filtering. Every
+paper must be evaluated by an LLM against the research interest
+descriptions below.
+
+To avoid timeouts, split the papers into batches of **≤ 30 papers**
+and process batches in parallel via subagents. Each subagent receives a
+batch and returns a JSON array of verdicts.
+
+#### Output format for `data/relevance.json`
 
 ```json
 [
@@ -60,9 +73,8 @@ relevant to the research interests defined below. Write the verdicts to
 ]
 ```
 
-> **Important**: the file must contain an entry for every paper in
-> `data/papers.json`, including irrelevant ones (set `is_relevant: false`).
-> When there are many papers, you may batch your work, but do not skip any.
+The file must contain an entry for **every** paper in `data/papers.json`,
+including irrelevant ones (`is_relevant: false`).
 
 #### Research interests
 
@@ -104,7 +116,7 @@ python src/main.py process --relevance data/relevance.json
 
 This command:
 
-1. Loads `papers.json` and `relevance.json`.
+1. Loads `data/papers.json` and `data/relevance.json`.
 2. Enriches each relevant paper with **venue** information (arXiv
    metadata and, when needed, project-page HTML) and **project page**
    URL (extracted from abstract / comments).
@@ -135,7 +147,6 @@ the user as the daily report.
 A Python virtual environment is used to isolate dependencies.
 
 ```bash
-cd /Users/tianbeiwen/Develop/arxiv-digest
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple
@@ -144,7 +155,7 @@ pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple
 If the venv already exists, just activate it before running commands:
 
 ```bash
-source /Users/tianbeiwen/Develop/arxiv-digest/.venv/bin/activate
+source .venv/bin/activate
 ```
 
 Ensure `.secret/zotero.env` contains:
