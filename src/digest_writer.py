@@ -68,6 +68,18 @@ def write_digest(
     return output_path
 
 
+def _normalize_theme(theme: Optional[str]) -> str:
+    if not theme:
+        return ""
+    t = str(theme).strip().lower()
+    if t in {"a", "theme_a", "theme a"}:
+        return "theme_a"
+    if t in {"b", "theme_b", "theme b"}:
+        return "theme_b"
+    return t
+
+
+
 def write_discord_components(
     papers: list,
     date_str: Optional[str] = None,
@@ -79,9 +91,9 @@ def write_discord_components(
     if date_str is None:
         date_str = datetime.now().strftime("%Y-%m-%d")
 
-    # Group papers by theme
-    theme_a = [p for p in papers if p.get("relevance_theme") == "theme_a"]
-    theme_b = [p for p in papers if p.get("relevance_theme") == "theme_b"]
+    # Group papers by normalized theme
+    theme_a = [p for p in papers if _normalize_theme(p.get("relevance_theme")) == "theme_a"]
+    theme_b = [p for p in papers if _normalize_theme(p.get("relevance_theme")) == "theme_b"]
 
     messages = []
 

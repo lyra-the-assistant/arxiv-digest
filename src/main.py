@@ -270,6 +270,7 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
 
     sub.add_parser("fetch", help="Fetch today's papers from arXiv")
+    sub.add_parser("judge", help="Judge fetched papers for relevance")
 
     proc = sub.add_parser("process", help="Process relevant papers")
     proc.add_argument(
@@ -294,6 +295,8 @@ def main():
 
     if args.command == "fetch":
         cmd_fetch(args)
+    elif args.command == "judge":
+        cmd_judge(args)
     elif args.command == "process":
         cmd_process(args)
     elif args.command == "discord":
