@@ -149,13 +149,18 @@ def _paper_to_blocks(paper: dict) -> list[dict]:
     venue = paper.get("venue") or "arXiv preprint"
     pp = paper.get("project_page")
     reason = paper.get("relevance_reason", "")
+    abstract = paper.get("abstract", "")
 
     # Build nested content with unicode bullets and fullwidth spaces
     lines = [f"**•** {paper['title']}"]
     lines.append(f"　**•** [{arxiv_id}](<{arxiv_url}>) — {venue}")
     if pp:
         lines.append(f"　**•** 📎 <{pp}>")
+    if abstract:
+        # Truncate abstract if too long
+        abstract_text = abstract[:200] + "..." if len(abstract) > 200 else abstract
+        lines.append(f"　**•** Abstract: {abstract_text}")
     if reason:
-        lines.append(f"　**•** {reason}")
+        lines.append(f"　**•** Why relevant: {reason}")
 
     return [{"type": "text", "text": "\n".join(lines)}]
